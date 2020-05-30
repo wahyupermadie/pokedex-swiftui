@@ -36,6 +36,17 @@ struct ShimmerView: View {
     }
 }
 
+struct PokemonShimmer: View {
+    var body: some View {
+        HStack {
+            ShimmerView()
+                .frame(width: (UIScreen.main.bounds.width - 30) / 2, height: (UIScreen.main.bounds.width - 30) / 2)
+            
+            ShimmerView()
+                .frame(width: (UIScreen.main.bounds.width - 30) / 2, height: (UIScreen.main.bounds.width - 30) / 2)
+        }
+    }
+}
 struct ShimmerView_Previews: PreviewProvider {
     static var previews: some View {
          VStack {

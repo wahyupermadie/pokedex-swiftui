@@ -18,6 +18,11 @@
 		898F4483247ECD8A008E6B48 /* PokemonItemShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898F4482247ECD8A008E6B48 /* PokemonItemShimmer.swift */; };
 		89D746D1247ED5BA001A8B84 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D746D0247ED5BA001A8B84 /* Helper.swift */; };
 		89D746D3247EF033001A8B84 /* PokemonTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D746D2247EF033001A8B84 /* PokemonTypeView.swift */; };
+		89F895632480190B00942CDC /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F895622480190B00942CDC /* ColorManager.swift */; };
+		89F8956524801AAC00942CDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8956424801AAC00942CDC /* Constants.swift */; };
+		89F8956724801DF100942CDC /* PokemonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8956624801DF100942CDC /* PokemonResponse.swift */; };
+		89F8956924801EB500942CDC /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8956824801EB500942CDC /* PokemonViewModel.swift */; };
+		89F8956B24802A7600942CDC /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8956A24802A7600942CDC /* PokemonRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		898F4482247ECD8A008E6B48 /* PokemonItemShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonItemShimmer.swift; sourceTree = "<group>"; };
 		89D746D0247ED5BA001A8B84 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		89D746D2247EF033001A8B84 /* PokemonTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeView.swift; sourceTree = "<group>"; };
+		89F895622480190B00942CDC /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		89F8956424801AAC00942CDC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		89F8956624801DF100942CDC /* PokemonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonResponse.swift; sourceTree = "<group>"; };
+		89F8956824801EB500942CDC /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
+		89F8956A24802A7600942CDC /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,8 @@
 		898F4478247EC111008E6B48 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				89F8956624801DF100942CDC /* PokemonResponse.swift */,
+				89F8956A24802A7600942CDC /* PokemonRepository.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -107,6 +119,7 @@
 		898F4479247EC11A008E6B48 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				89F8956824801EB500942CDC /* PokemonViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -126,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				89D746D0247ED5BA001A8B84 /* Helper.swift */,
+				89F895622480190B00942CDC /* ColorManager.swift */,
+				89F8956424801AAC00942CDC /* Constants.swift */,
 			);
 			path = external;
 			sourceTree = "<group>";
@@ -207,10 +222,15 @@
 			files = (
 				898F447C247EC6EF008E6B48 /* ShimmerView.swift in Sources */,
 				89D746D1247ED5BA001A8B84 /* Helper.swift in Sources */,
+				89F8956924801EB500942CDC /* PokemonViewModel.swift in Sources */,
+				89F8956B24802A7600942CDC /* PokemonRepository.swift in Sources */,
 				898F4464247EC03F008E6B48 /* AppDelegate.swift in Sources */,
 				898F4466247EC03F008E6B48 /* SceneDelegate.swift in Sources */,
 				898F4468247EC03F008E6B48 /* ContentView.swift in Sources */,
+				89F8956524801AAC00942CDC /* Constants.swift in Sources */,
+				89F8956724801DF100942CDC /* PokemonResponse.swift in Sources */,
 				898F4483247ECD8A008E6B48 /* PokemonItemShimmer.swift in Sources */,
+				89F895632480190B00942CDC /* ColorManager.swift in Sources */,
 				89D746D3247EF033001A8B84 /* PokemonTypeView.swift in Sources */,
 				898F4481247ECD7C008E6B48 /* PokemonItem.swift in Sources */,
 			);
