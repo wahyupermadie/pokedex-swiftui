@@ -51,7 +51,5 @@ extension String {
 func getDummyDataObject() -> Pokemon {
     let dummyDataString = "{\"id\":37,\"num\":\"037\",\"name\":\"Vulpix\",\"img\":\"http://www.serebii.net/pokemongo/pokemon/037.png\",\"type\":[\"Fire\"],\"height\":\"0.61 m\",\"weight\":\"9.9 kg\",\"candy\":\"Vulpix Candy\",\"candy_count\":50,\"egg\":\"5 km\",\"spawn_chance\":0.22,\"avg_spawns\":22,\"spawn_time\":\"13:43\",\"multipliers\":[2.74,2.81],\"weaknesses\":[\"Water\",\"Ground\",\"Rock\"],\"next_evolution\":[{\"num\":\"038\",\"name\":\"Ninetales\"}]}"
     
-    let dict = dummyDataString.parse(to: Pokemon.self)
-    print(dict)
-    return dict!
+    return dummyDataString.parse(to: Pokemon.self)!
 }

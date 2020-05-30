@@ -11,7 +11,7 @@ import UIKit
 
 protocol IPokemonRepository {
     func fetchPokemon(successHandler: @escaping(_ response: PokemonResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-    func fetchPokemonImage(successHandler: @escaping(_ response: UIImage) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
+    func fetchPokemonImage(from imageUrl: URL, successHandler: @escaping(_ response: UIImage) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
 }
 class PokemonRepository: IPokemonRepository {
     static let instance: IPokemonRepository = PokemonRepository()
@@ -37,8 +37,28 @@ class PokemonRepository: IPokemonRepository {
         }.resume()
     }
     
-    func fetchPokemonImage(successHandler: @escaping (UIImage) -> Void, errorHandler: @escaping (Error) -> Void) {
+    func fetchPokemonImage(from imageUrl: URL, successHandler: @escaping (UIImage) -> Void, errorHandler: @escaping (Error) -> Void) {
+        if let fromCache = PokemonRepository.cache.object(forKey: imageUrl as AnyObject) as? UIImage {
+            successHandler(fromCache)
+            return
+        }
         
+        urlSession.dataTask(with: imageUrl) { (data, res, err) in
+            if err != nil {
+                errorHandler(err!)
+                return
+            }
+            
+            guard let image = UIImage(data: data!) else {
+                return
+            }
+            
+            PokemonRepository.cache.setObject(image, forKey: imageUrl as AnyObject)
+            DispatchQueue.main.async {
+                successHandler(image)
+            }
+            
+        }.resume()
     }
     
     

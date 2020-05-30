@@ -17,16 +17,6 @@ struct PokemonItem: View {
         ZStack {
             PokemonBackgroundView(pokemonType: pokemon.type[0].rawValue)
             HStack {
-                VStack {
-                    Spacer()
-                    ForEach(pokemon.type, id: \.self) { (type: TypeElement) in
-                        PokemonTypeView(type: type.rawValue)
-                    }
-                    Spacer()
-                }.padding([.leading, .top], 10)
-                Spacer()
-            }
-            HStack {
                 Spacer()
                 VStack {
                     Spacer()
@@ -38,9 +28,20 @@ struct PokemonItem: View {
                             .position(x: 80, y: 70)
                             .frame(width: (UIScreen.main.bounds.width - 20) / 3, height: (UIScreen.main.bounds.width - 20) / 3)
                             .clipped()
-                        PokemonImageView()
+                        PokemonImageView(pokemonImageUrl: pokemon.img)
                     }
                 }
+            }
+            
+            HStack {
+                VStack {
+                    Spacer()
+                    ForEach(pokemon.type, id: \.self) { (type: TypeElement) in
+                        PokemonTypeView(type: type.rawValue)
+                    }
+                    Spacer()
+                }.padding([.leading, .top], 10)
+                Spacer()
             }
             
             HStack{
@@ -88,12 +89,39 @@ struct PokemonBackgroundView: View {
 }
 
 struct PokemonImageView : View {
+    @ObservedObject var pokemonVm = PokemonViewModel()
+    private var pokemonImageUrl: String
+    @State private var animationAmount: CGFloat = 1
+    init(pokemonImageUrl: String) {
+        self.pokemonImageUrl = pokemonImageUrl
+    }
     var body: some View {
-        Image("bulbasur")
-            .resizable()
-            .position(x: 80, y: (UIScreen.main.bounds.width - 30)/5)
-            .foregroundColor(.white)
-            .frame(width: (UIScreen.main.bounds.width)/3, height: (UIScreen.main.bounds.width)/3)
+        ZStack {
+            if self.pokemonVm.image != nil {
+                Image(uiImage: pokemonVm.image!)
+                    .resizable()
+                    .foregroundColor(.white)
+            }else{
+                Image("pokeballcolor")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .scaleEffect(animationAmount)
+                    .animation(
+                        Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)
+                    ).frame(
+                        width: (UIScreen.main.bounds.width)/10,
+                        height: (UIScreen.main.bounds.width)/10
+                    )
+            }
+        }.onAppear {
+            self.animationAmount = 2
+            self.pokemonVm.getPokemonImage(from: URL(string: self.pokemonImageUrl)!)
+        }
+        .position(x: 70, y: (UIScreen.main.bounds.width - 20)/5)
+        .frame(
+            width: (UIScreen.main.bounds.width)/3,
+            height: (UIScreen.main.bounds.width)/3
+        ).clipped()
     }
 }
 

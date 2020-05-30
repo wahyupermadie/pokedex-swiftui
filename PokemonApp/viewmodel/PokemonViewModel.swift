@@ -17,6 +17,8 @@ protocol IPokemonViewModel {
 class PokemonViewModel: IPokemonViewModel, ObservableObject {
     @Published var isLoading: Bool = true
     @Published var pokemons: [Pokemon]? = []
+    @Published var image: UIImage? = nil
+    
     private let pokemonRepository: IPokemonRepository
     init(pokemonRepository: IPokemonRepository = PokemonRepository.instance) {
         self.pokemonRepository = pokemonRepository
@@ -34,8 +36,10 @@ class PokemonViewModel: IPokemonViewModel, ObservableObject {
     }
     
     func getPokemonImage(from imageUrl: URL) {
-        
+        pokemonRepository.fetchPokemonImage(from: imageUrl, successHandler: { (data) in
+            self.image = data
+        }) { (err) in
+            print(err)
+        }
     }
-    
-    
 }
