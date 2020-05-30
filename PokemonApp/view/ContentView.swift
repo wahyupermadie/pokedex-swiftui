@@ -42,6 +42,15 @@ struct ContentView: View {
                 }
             }.navigationBarTitle(
                 Text("Dex Pokemon")
+            ).navigationBarItems(trailing:
+                HStack {
+                    NavigationLink(destination: ProfileView()){
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .renderingMode(.original)
+                            .frame(width: 25, height: 25)
+                    }
+                }
             )
         }
         .onAppear(perform: {
