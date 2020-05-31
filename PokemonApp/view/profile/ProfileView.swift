@@ -19,7 +19,7 @@ struct ProfileView: View {
                 .frame(width: 250, height: 250)
             Text("I Putu Wahyu Permadi")
             Text("wahyu.permadi1725@gmail.com")
-        }
+        }.edgesIgnoringSafeArea(.top)
     }
 }
 

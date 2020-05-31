@@ -100,11 +100,11 @@ struct PokemonImageView : View {
             if self.pokemonVm.image != nil {
                 Image(uiImage: pokemonVm.image!)
                     .resizable()
-                    .foregroundColor(.white)
+                    .renderingMode(.original)
             }else{
                 Image("pokeballcolor")
                     .resizable()
-                    .foregroundColor(.white)
+                    .renderingMode(.original)
                     .scaleEffect(animationAmount)
                     .animation(
                         Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)

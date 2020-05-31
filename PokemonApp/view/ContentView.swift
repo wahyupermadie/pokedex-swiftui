@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
-import ShimmerView
 
 struct ContentView: View {
+    
     @ObservedObject var pokemonViewModel : PokemonViewModel = PokemonViewModel()
     @State var Grid: [Int] = []
     
@@ -24,7 +24,9 @@ struct ContentView: View {
                                 ForEach(self.Grid, id: \.self){ i in
                                     HStack(spacing: 15){
                                         ForEach(i...i+1, id: \.self) { (j: Int) in
-                                            PokemonItem(pokemon: self.pokemonViewModel.pokemons![j])
+                                            NavigationLink(destination: DetailPokemonView(pokemon: self.pokemonViewModel.pokemons![j])){
+                                                PokemonItem(pokemon: self.pokemonViewModel.pokemons![j])
+                                            }
                                         }
                                     }
                                 }
@@ -42,10 +44,11 @@ struct ContentView: View {
                 }
             }.navigationBarTitle(
                 Text("Dex Pokemon")
-            ).navigationBarItems(trailing:
+            )
+            .navigationViewStyle(StackNavigationViewStyle()).navigationBarItems(trailing:
                 HStack {
                     NavigationLink(destination: ProfileView()){
-                        Image(systemName: "person.fill")
+                        Image(systemName: "person")
                             .resizable()
                             .renderingMode(.original)
                             .frame(width: 25, height: 25)
